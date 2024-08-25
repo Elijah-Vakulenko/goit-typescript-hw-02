@@ -5,7 +5,7 @@ import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
-import { requestImagesByQuery, ImageFromAPI } from "./services/api"; 
+import { requestImagesByQuery, ImageFromAPI } from "./services/api";
 
 function App() {
   const [images, setImages] = useState<ImageFromAPI[] | null>(null);
@@ -14,7 +14,7 @@ function App() {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchImagesByQuery() {
@@ -50,26 +50,26 @@ function App() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const openModal = (imageUrl: string) => {
+  const openModal = (image: ImageFromAPI) => {
     setModalIsOpen(true);
-    setSelectedImage(imageUrl);
+    setSelectedImageUrl(image.urls.regular); // Use `urls.regular` to get the high-resolution image URL
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setSelectedImage(null);
+    setSelectedImageUrl(null);
   };
 
   return (
-    <div className="container"> 
+    <div className="container">
       <SearchBar onSubmit={onSetSearchQuery} />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
       {images && <ImageGallery images={images} onImageClick={openModal} />}
       {images && <LoadMoreBtn onClick={addMoreImages} />}
       <ImageModal
-        isOpen={!!selectedImage}
-        image={selectedImage}
+        isOpen={modalIsOpen}
+        imageUrl={selectedImageUrl}
         onRequestClose={closeModal}
       />
     </div>

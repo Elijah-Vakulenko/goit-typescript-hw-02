@@ -19,27 +19,19 @@ const customStyles = {
 };
 
 interface ImageModalProps {
-  image: ImageFromAPI | null; 
-  isOpen: boolean; 
-  onRequestClose: () => void; 
+  isOpen: boolean;
+  imageUrl: string | null;
+  onRequestClose: () => void;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ image, isOpen, onRequestClose }) => {
-  if (!image) {
-    return null; 
-  }
+const ImageModal: React.FC<ImageModalProps> = ({ isOpen, imageUrl, onRequestClose }) => {
+  if (!isOpen || !imageUrl) return null;
 
   return (
-    <Modal
-      style={customStyles}
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      overlayClassName={s.overlay}
-      contentLabel="Image Modal"
-      appElement={document.getElementById("root") as HTMLElement} 
-    >
-      <img src={image.urls.regular} alt={image.alt_description || 'Image'} /> 
-    </Modal>
+    <div className="modal">
+      <button onClick={onRequestClose}>Close</button>
+      <img src={imageUrl} alt="Modal" />
+    </div>
   );
 };
 
