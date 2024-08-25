@@ -1,6 +1,6 @@
 .logo {
   font: italic bold 20px "Montserrat", sans-serif;
-  color: #f5f0d2;
+  color: #fd9415;
   @media screen and (min-width: 375px) {
     font-size: 25px;
   }
@@ -18,8 +18,8 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  background-color: #514366;
-  border: 2px solid #cea1b6;
+  background-color: #ffbd4c;
+  border: 2px solid #fd9415;
   border-radius: 8px;
   margin-bottom: 25px;
 
@@ -52,11 +52,11 @@
 
 .btn {
   color: #301607;
-  background-color: #f6d7dc;
+  background-color: #fd9415;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   font-weight: bold;
   &:hover {
-    background-color: #cea1b6;
+    background-color: #ff7161;
   }
 }

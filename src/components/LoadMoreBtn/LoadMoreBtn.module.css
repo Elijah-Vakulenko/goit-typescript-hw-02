@@ -3,9 +3,9 @@
   margin-top: 25px;
   font-weight: bold;
   color: #301607;
-  background-color: #f6d7dc;
+  background-color: #ffbd4c;
   border-radius: 8px;
   &:hover {
-    background-color: #cea1b6;
+    background-color: #ff7161;
   }
 }
