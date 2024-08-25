@@ -14,7 +14,7 @@ function App() {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<ImageFromAPI | null>(null);
 
   useEffect(() => {
     async function fetchImagesByQuery() {
@@ -52,12 +52,12 @@ function App() {
 
   const openModal = (image: ImageFromAPI) => {
     setModalIsOpen(true);
-    setSelectedImageUrl(image.urls.regular); // Use `urls.regular` to get the high-resolution image URL
+    setSelectedImage(image); 
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setSelectedImageUrl(null);
+    setSelectedImage(null);
   };
 
   return (
@@ -69,7 +69,7 @@ function App() {
       {images && <LoadMoreBtn onClick={addMoreImages} />}
       <ImageModal
         isOpen={modalIsOpen}
-        imageUrl={selectedImageUrl}
+        image={selectedImage} 
         onRequestClose={closeModal}
       />
     </div>
