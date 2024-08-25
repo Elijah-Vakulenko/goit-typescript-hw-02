@@ -12,7 +12,7 @@ interface ImageGalleryProps {
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {
   return (
     <div className="container">
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1440: 5 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 1023: 4, 1440: 5 }}>
         <Masonry className={s.masonryGrid}>
           {images.map((image) => (
             <div key={image.id} className={s.imageWrapper}>

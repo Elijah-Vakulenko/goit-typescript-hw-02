@@ -9,7 +9,7 @@ const Loader: React.FC = () => {
         visible={true}
         height="80"
         width="80"
-        color="#4fa94d"
+        color="#FD9415"
         ariaLabel="tail-spin-loading"
         radius="1"
         wrapperStyle={{}}
